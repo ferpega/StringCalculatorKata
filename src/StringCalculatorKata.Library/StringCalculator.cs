@@ -9,13 +9,31 @@ namespace StringCalculatorKata.Library
         {
             var inputStringManager = new InputStringManager(numbersToAdd);
             var result = 0;
-            foreach (var number in inputStringManager.Numbers)
+
+            var negativeNumbers = string.Empty;
+
+            foreach (var numberString in inputStringManager.NumberStrings)
             {
-                result += string.IsNullOrEmpty(number)
+                var number = string.IsNullOrEmpty(numberString)
                     ? 0
-                    : Convert.ToInt32(number);
+                    : Convert.ToInt32(numberString);
+
+                if (number < 0)
+                {
+                    negativeNumbers += string.IsNullOrEmpty(negativeNumbers)
+                        ? numberString
+                        : $", {numberString}";
+                }
+
+                result += number;
             }
-            return result;
+
+            if (string.IsNullOrEmpty(negativeNumbers))
+            {
+                return result;
+            }
+
+            throw new Exception($"negativos no soportados: {negativeNumbers}");
         }
     }
 }

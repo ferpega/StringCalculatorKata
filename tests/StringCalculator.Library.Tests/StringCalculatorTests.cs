@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace StringCalculatorKata.Library.Tests
 {
@@ -45,13 +46,43 @@ namespace StringCalculatorKata.Library.Tests
             Assert.AreEqual(6, result);
         }
 
-
         [TestMethod]
         public void Add_WithSpecifiedDelimiterAndThreeNumbers_ReturnsRightResult()
         {
             var sut = new StringCalculator();
             var result = sut.Add("//;\n1;2");
             Assert.AreEqual(3, result);
+        }
+
+        [TestMethod]
+        public void Add_WithNegativeNumber_ThrowException()
+        {
+            var sut = new StringCalculator();
+            try
+            {
+                var result = sut.Add("-1");
+                Assert.Fail("This should throw exception.");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("negativos no soportados: -1", ex.Message);
+            }
+        }
+
+
+        [TestMethod]
+        public void Add_WithNegativeNumbers_ThrowException()
+        {
+            var sut = new StringCalculator();
+            try
+            {
+                var result = sut.Add("-1,5,-3");
+                Assert.Fail("This should throw exception.");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("negativos no soportados: -1, -3", ex.Message);
+            }
         }
 
     }

@@ -14,14 +14,14 @@ namespace StringCalculatorKata.Library
         public string InputString { get; private set; }
         public string CleanedInputString { get; private set; }
         public string Delimiter { get; private set; }
-        public string[] Numbers { get; private set; }
+        public string[] NumberStrings { get; private set; }
 
         private void Parse()
         {
             var semiCleanedInputString = ClearSpecifiedDelimiter();
             Delimiter = GetDelimiter(semiCleanedInputString);
             CleanedInputString = RemoveNewLine(semiCleanedInputString);
-            Numbers = CleanedInputString.Split(new string[] { Delimiter }, StringSplitOptions.None);
+            NumberStrings = CleanedInputString.Split(new string[] { Delimiter }, StringSplitOptions.None);
         }
         private string ClearSpecifiedDelimiter()
         {

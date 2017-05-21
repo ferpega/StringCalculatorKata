@@ -13,7 +13,7 @@ namespace StringCalculatorKata.Library.Tests
         {
             var sut = new InputStringManager("");
             Assert.AreEqual(",", sut.Delimiter);
-            CollectionAssert.AreEqual(new string[] { "" }, sut.Numbers);
+            CollectionAssert.AreEqual(new string[] { "" }, sut.NumberStrings);
         }
 
         [TestMethod]
@@ -21,7 +21,7 @@ namespace StringCalculatorKata.Library.Tests
         {
             var sut = new InputStringManager("0");
             Assert.AreEqual(",", sut.Delimiter);
-            CollectionAssert.AreEqual(new string[] { "0" }, sut.Numbers);
+            CollectionAssert.AreEqual(new string[] { "0" }, sut.NumberStrings);
         }
 
         [TestMethod]
@@ -29,7 +29,7 @@ namespace StringCalculatorKata.Library.Tests
         {
             var sut = new InputStringManager("1");
             Assert.AreEqual(",", sut.Delimiter);
-            CollectionAssert.AreEqual(new string[] { "1" }, sut.Numbers);
+            CollectionAssert.AreEqual(new string[] { "1" }, sut.NumberStrings);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace StringCalculatorKata.Library.Tests
         {
             var sut = new InputStringManager("1,2");
             Assert.AreEqual(",", sut.Delimiter);
-            CollectionAssert.AreEqual(new string[] { "1", "2" }, sut.Numbers);
+            CollectionAssert.AreEqual(new string[] { "1", "2" }, sut.NumberStrings);
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace StringCalculatorKata.Library.Tests
         {
             var sut = new InputStringManager("1\n2,3");
             Assert.AreEqual(",", sut.Delimiter);
-            CollectionAssert.AreEqual(new string[] { "1", "2", "3" }, sut.Numbers);
+            CollectionAssert.AreEqual(new string[] { "1", "2", "3" }, sut.NumberStrings);
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace StringCalculatorKata.Library.Tests
         {
             var sut = new InputStringManager("//;\n1;2");
             Assert.AreEqual(";", sut.Delimiter);
-            CollectionAssert.AreEqual(new string[] { "1", "2" }, sut.Numbers);
+            CollectionAssert.AreEqual(new string[] { "1", "2" }, sut.NumberStrings);
         }
     }
 }
