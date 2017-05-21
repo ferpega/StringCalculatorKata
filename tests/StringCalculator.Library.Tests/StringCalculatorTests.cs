@@ -20,5 +20,13 @@ namespace StringCalculatorKata.Library.Tests
             var result = sut.Add("1");
             Assert.AreEqual(1, result);
         }
+
+        [TestMethod]
+        public void Add_WithTwoNumbers_ReturnsRightResult()
+        {
+            var sut = new StringCalculator();
+            var result = sut.Add("1,2");
+            Assert.AreEqual(3, result);
+        }
     }
 }
