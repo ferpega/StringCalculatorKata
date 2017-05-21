@@ -14,7 +14,7 @@ namespace StringCalculatorKata.Library.Tests
         }
 
         [TestMethod]
-        public void Add_WithOneNumber_ReturnsRightResult()
+        public void Add_WithNumber1_ReturnsRightResult()
         {
             var sut = new StringCalculator();
             var result = sut.Add("1");
@@ -22,7 +22,7 @@ namespace StringCalculatorKata.Library.Tests
         }
 
         [TestMethod]
-        public void Add_WithTwoNumbers_ReturnsRightResult()
+        public void Add_WithTwoNumbers1And2_ReturnsRightResult()
         {
             var sut = new StringCalculator();
             var result = sut.Add("1,2");
