@@ -45,5 +45,14 @@ namespace StringCalculatorKata.Library.Tests
             Assert.AreEqual(6, result);
         }
 
+
+        [TestMethod]
+        public void Add_WithSpecifiedDelimiterAndThreeNumbers_ReturnsRightResult()
+        {
+            var sut = new StringCalculator();
+            var result = sut.Add("//;\n1;2");
+            Assert.AreEqual(3, result);
+        }
+
     }
 }
