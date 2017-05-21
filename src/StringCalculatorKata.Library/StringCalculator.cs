@@ -14,9 +14,7 @@ namespace StringCalculatorKata.Library
 
             foreach (var numberString in inputStringManager.NumberStrings)
             {
-                var number = string.IsNullOrEmpty(numberString)
-                    ? 0
-                    : Convert.ToInt32(numberString);
+                var number = GetNumberFromString(numberString);
 
                 if (number < 0)
                 {
@@ -25,9 +23,7 @@ namespace StringCalculatorKata.Library
                         : $", {numberString}";
                 }
 
-                result += number > 1000
-                    ? 0
-                    : number;
+                result += AddNewNumberOnlyIfLessThanOrEqualTo1000(number);
             }
 
             if (string.IsNullOrEmpty(negativeNumbers))
@@ -36,6 +32,22 @@ namespace StringCalculatorKata.Library
             }
 
             throw new Exception($"negativos no soportados: {negativeNumbers}");
+        }
+
+        private int GetNumberFromString(string numberString)
+        {
+            var result = string.IsNullOrEmpty(numberString)
+                ? 0
+                : Convert.ToInt32(numberString);
+            return result;
+        }
+
+        private int AddNewNumberOnlyIfLessThanOrEqualTo1000(int number)
+        {
+            var result = number > 1000
+                      ? 0
+                      : number;
+            return result;
         }
     }
 }
