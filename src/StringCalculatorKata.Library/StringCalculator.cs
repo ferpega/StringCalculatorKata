@@ -25,7 +25,9 @@ namespace StringCalculatorKata.Library
                         : $", {numberString}";
                 }
 
-                result += number;
+                result += number > 1000
+                    ? 0
+                    : number;
             }
 
             if (string.IsNullOrEmpty(negativeNumbers))

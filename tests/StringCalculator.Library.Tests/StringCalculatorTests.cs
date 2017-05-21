@@ -69,7 +69,6 @@ namespace StringCalculatorKata.Library.Tests
             }
         }
 
-
         [TestMethod]
         public void Add_WithNegativeNumbers_ThrowException()
         {
@@ -85,5 +84,12 @@ namespace StringCalculatorKata.Library.Tests
             }
         }
 
+        [TestMethod]
+        public void Add_WithNumbersGreatherThan1000_ReturnsRightResult()
+        {
+            var sut = new StringCalculator();
+            var result = sut.Add("1\n1001,3");
+            Assert.AreEqual(4, result);
+        }
     }
 }
