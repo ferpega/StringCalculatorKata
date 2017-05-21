@@ -7,7 +7,9 @@ namespace StringCalculatorKata.Library
 
         public int Add(string numbersToAdd)
         {
-            return 0;
+            return string.IsNullOrEmpty(numbersToAdd)
+                ? 0
+                : 1;
         }
     }
 }
