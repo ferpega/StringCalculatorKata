@@ -65,7 +65,7 @@ namespace StringCalculatorKata.Library.Tests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("negativos no soportados: -1", ex.Message);
+                Assert.IsTrue(ex.Message.Contains(": -1"));
             }
         }
 
@@ -80,7 +80,7 @@ namespace StringCalculatorKata.Library.Tests
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("negativos no soportados: -1, -3", ex.Message);
+                Assert.IsTrue(ex.Message.Contains(": -1"));
             }
         }
 

@@ -9,19 +9,14 @@ namespace StringCalculatorKata.Library
         {
             var inputStringManager = new InputStringManager(numbersToAdd);
             var result = 0;
-
+            
             var negativeNumbers = string.Empty;
 
             foreach (var numberString in inputStringManager.NumberStrings)
             {
                 var number = GetNumberFromString(numberString);
 
-                if (number < 0)
-                {
-                    negativeNumbers += string.IsNullOrEmpty(negativeNumbers)
-                        ? numberString
-                        : $", {numberString}";
-                }
+                negativeNumbers = ConcatenateNegativeNumber(negativeNumbers, number);               
 
                 result += AddNewNumberOnlyIfLessThanOrEqualTo1000(number);
             }
@@ -31,23 +26,35 @@ namespace StringCalculatorKata.Library
                 return result;
             }
 
-            throw new Exception($"negativos no soportados: {negativeNumbers}");
+            throw new Exception($"Non supported negative numbers: {negativeNumbers}");
         }
 
         private int GetNumberFromString(string numberString)
         {
-            var result = string.IsNullOrEmpty(numberString)
+            return string.IsNullOrEmpty(numberString)
                 ? 0
                 : Convert.ToInt32(numberString);
+        }
+
+        private string ConcatenateNegativeNumber(string negativeNumbers, int number)
+        {
+            var result = negativeNumbers;
+
+            if (number < 0)
+            {
+                result += string.IsNullOrEmpty(negativeNumbers)
+                    ? string.Empty
+                    : ", ";
+                result += $"{number}";
+            }
             return result;
         }
 
         private int AddNewNumberOnlyIfLessThanOrEqualTo1000(int number)
         {
-            var result = number > 1000
+            return number > 1000
                       ? 0
                       : number;
-            return result;
         }
     }
 }
